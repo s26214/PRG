@@ -2,14 +2,15 @@
 #include <string>
 std::string pas;
 std::string com;
-auto main(int argc , char * argv []) -> int
+auto main(int , char * argv []) -> int
 {
+auto const con = std::string{argv[1]};
+std::string S;
 do{
-std::cout<< argc;
 std::cout<<"password:";
-std::cin>>com;
+std::cin>>S;
 }
-while(com !=pas);
-std::cout<<"welcome!";
+while(S !=con);
+std::cout<<"welcome!\n";
 return 0;
 }
