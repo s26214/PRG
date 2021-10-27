@@ -1,17 +1,26 @@
 #include <iostream>
+#include <random>
 auto main()->int
 {
 std::random_device rd;
-std::uniform_int_distribution < int > d20 (1 , 20);
-constexpr auto CRITICAL_SUCCESS = 20;
-constexpr auto CRITICAL_FAILURE = 1;
-auto const x = d20 ( rd );
-if ( x == CRITICAL_SUCCESS ) {
-std::cout << " you kill the monster in a single blow !\ n ";
-} else if ( x == CRITICAL_FAILURE ) {
-std::cout << " you wound yourself with your own sword !\ n ";
-} else {
-std::cout << " roll for damage .\ n ";
+std::uniform_int_distribution < int > num (1 , 100);
+auto const x = num ( rd );
+int y;
+do{
+ if(y == 69){
+std::cout<<"nice\n";
+std::cin>>y;
 }
+if(y > x) {
+std::cout<<"too big!\n";
+std::cin>>y;
+} else if(y < x) 
+{
+std::cout<<" Too small! \n";
+std::cin>>y;
+}
+
+}while(y!=x);
+std::cout <<"Bingo!\n";
 return 0;
 }
