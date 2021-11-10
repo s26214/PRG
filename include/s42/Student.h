@@ -1,12 +1,16 @@
+#ifndef S42_STUDENT_H
+#define S42_STUDENT_H
 #include <sstream>
 #include <string>
-
-struct student{
-	std::string imie;
-	std::string nazwisko;
-	std::string index;
-	int semestr;
-	int srednia;
-	student(std::string, std::string, std::string, int, int);
-	auto to_string() const -> std::string;
+namespace s42 {
+struct Student {
+    std::string name;
+    std::string surname;
+    std::string index;
+    int semester;
+    int average;
+    Student(std::string, std::string, std::string, int, int);
+    auto to_string() const -> std::string;
 };
+}
+#endif
