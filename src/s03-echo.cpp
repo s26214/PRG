@@ -26,10 +26,9 @@ auto main(int argc, char* argv[]) -> int
         } else {
             for (int i = argc - 1; i > 1; i--) {
                 x = std::string(argv[i]);
-                std::cout << x << " ";
+                std::cout << x << " ";}
+                 std::cout<<"\n";
 
-                std::cout << "\n";
-            }
         }
 }
         else if (argv[1] == std::string("-l"))
