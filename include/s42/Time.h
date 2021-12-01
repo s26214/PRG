@@ -26,15 +26,12 @@ struct Time {
     auto to_string(Time_of_day) -> std::string;
     auto time_of_day() const -> Time_of_day;
 
-auto operator + ( Time const &) const -> Time;
-auto operator - ( Time const &) const -> Time;
-auto operator < ( Time const &) const -> bool;
-auto operator > ( Time const &) const -> bool;
-auto operator == ( Time const &) const -> bool;
-auto operator != ( Time const &) const -> bool;
-
-
-
+    auto operator+(Time const&) const -> Time;
+    auto operator-(Time const&) const -> Time;
+    auto operator<(Time const&) const -> bool;
+    auto operator>(Time const&) const -> bool;
+    auto operator==(Time const&) const -> bool;
+    auto operator!=(Time const&) const -> bool;
 };
-} 
+}  // namespace s42
 #endif

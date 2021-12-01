@@ -100,117 +100,111 @@ auto s42::Time::time_of_day() const -> s42::Time::Time_of_day
 }
 
 
-auto s42::Time::operator + ( s42::Time const& op) const -> s42::Time
+auto s42::Time::operator+(s42::Time const& op) const -> s42::Time
 {
-int h = hour;
-int m = min;
-int s = sec;
-h += op.hour;
-m += op.min;
-s += op.sec; 
-if(h > 24){
-h -=24;
-}
-if(m >59){
-m -= 60;
-h++;
-}
-if( s > 59){
-s -= 60;
-m++;
-}
-return s42::Time(h ,m, s);
+    int h = hour;
+    int m = min;
+    int s = sec;
+    h += op.hour;
+    m += op.min;
+    s += op.sec;
+    if (h > 24) {
+        h -= 24;
+    }
+    if (m > 59) {
+        m -= 60;
+        h++;
+    }
+    if (s > 59) {
+        s -= 60;
+        m++;
+    }
+    return s42::Time(h, m, s);
 }
 
-auto s42::Time::operator - ( s42::Time const& op) const -> s42::Time
+auto s42::Time::operator-(s42::Time const& op) const -> s42::Time
 {
-int h = hour;
-int m = min;
-int s = sec;
-h -= op.hour;
-m -= op.min;
-s -= op.sec; 
-if(h < 0){
-h +=24;
-}
-if(m <0){
-m += 60;
-h--;
-}
-if( s < 0){
-s += 60;
-m--;
-}
+    int h = hour;
+    int m = min;
+    int s = sec;
+    h -= op.hour;
+    m -= op.min;
+    s -= op.sec;
+    if (h < 0) {
+        h += 24;
+    }
+    if (m < 0) {
+        m += 60;
+        h--;
+    }
+    if (s < 0) {
+        s += 60;
+        m--;
+    }
 
 
-return s42::Time(h ,m, s);
+    return s42::Time(h, m, s);
 }
 
-auto s42::Time::operator < ( s42::Time const& op) const -> bool
+auto s42::Time::operator<(s42::Time const& op) const -> bool
 {
-int h = hour;
-int m = min;
-int s = sec;
-if (h < op.hour )
-return true;
-else if (m < op. min)
-return true;
-else if (s < op.sec)
-return true;
-else
-return false;
- 
-
+    int h = hour;
+    int m = min;
+    int s = sec;
+    if (h < op.hour)
+        return true;
+    else if (m < op.min)
+        return true;
+    else if (s < op.sec)
+        return true;
+    else
+        return false;
 }
 
-auto s42::Time::operator > ( s42::Time const& op) const -> bool
+auto s42::Time::operator>(s42::Time const& op) const -> bool
 {
-int h = hour;
-int m = min;
-int s = sec;
-if (h > op.hour  )
-return true;
-else if (m > op. min)
-return true;
-else if (s > op.sec)
-return true;
-else
-return false;
-
+    int h = hour;
+    int m = min;
+    int s = sec;
+    if (h > op.hour)
+        return true;
+    else if (m > op.min)
+        return true;
+    else if (s > op.sec)
+        return true;
+    else
+        return false;
 }
 
-auto s42::Time::operator == ( s42::Time const& op) const -> bool
+auto s42::Time::operator==(s42::Time const& op) const -> bool
 {
-int h = hour;
-int m = min;
-int s = sec;
-if (h == op.hour  )
-return true;
-else if (m == op. min)
-return true;
-else if (s == op.sec)
-return true;
-else
-return false;
-
+    int h = hour;
+    int m = min;
+    int s = sec;
+    if (h == op.hour)
+        return true;
+    else if (m == op.min)
+        return true;
+    else if (s == op.sec)
+        return true;
+    else
+        return false;
 }
 
-auto s42::Time::operator != ( s42::Time const& op) const -> bool
+auto s42::Time::operator!=(s42::Time const& op) const -> bool
 {
-int h = hour;
-int m = min;
-int s = sec;
-if (h != op.hour)
-return true;
-else if (m != op. min)
-return true;
-else if (s != op.sec)
-return true;
-else
-return false;
-
+    int h = hour;
+    int m = min;
+    int s = sec;
+    if (h != op.hour)
+        return true;
+    else if (m != op.min)
+        return true;
+    else if (s != op.sec)
+        return true;
+    else
+        return false;
 }
-
 
 
 auto main() -> int
@@ -226,14 +220,15 @@ auto main() -> int
     auto time_3 = time_2 - s42::Time(5, 0, 59);
     std::cout << time_2.to_string() << "\n";
     std::cout << time_3.to_string() << "\n";
-auto time_4 = time > s42::Time(5,3,5);
-std::cout << time.to_string() << " > " << s42::Time(5,3,5).to_string() << "\n"; 
+    auto time_4 = time > s42::Time(5, 3, 5);
+    std::cout << time.to_string() << " > " << s42::Time(5, 3, 5).to_string()
+              << "\n";
 
-if (time_4 == 1){
-std::cout<<"is true \n";
-}else{
-std::cout<<"is false \n";
+    if (time_4 == 1) {
+        std::cout << "is true \n";
+    } else {
+        std::cout << "is false \n";
+    }
+
+    return 0;
 }
-
-	return 0;
-   }

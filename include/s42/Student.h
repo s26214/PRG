@@ -12,5 +12,5 @@ struct Student {
     Student(std::string, std::string, std::string, int, int);
     auto to_string() const -> std::string;
 };
-}
+}  // namespace s42
 #endif
