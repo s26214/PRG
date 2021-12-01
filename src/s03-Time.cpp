@@ -71,6 +71,48 @@ return out.str();
 }
 
 
+auto s42::Time::to_string (s42::Time::Time_of_day const t) -> std::string
+{
+switch (t){
+case s42::Time::Time_of_day::Morning:
+	return "Morning";
+case s42::Time::Time_of_day::Afternoon:
+        return "Afternoon";
+case s42::Time::Time_of_day::Evening:
+        return "Evening";
+case s42::Time::Time_of_day::Night:
+        return "Night";
+default:
+	return "What_time_of_day";
+
+}
+
+
+
+}
+
+
+auto s42::Time::time_of_day() const -> Time_of_day
+{
+
+if (hour >= 5 && hour < 12  )
+
+return s42::Time::Time_of_day::Morning;
+
+else if (hour >= 12 && hour < 18 )
+
+return s42::Time::Time_of_day::Afternoon;
+
+else if (hour >= 18 && hour < 20 ) 
+return s42::Time::Time_of_day::Evening;
+
+else if (hour >= 20 && hour < 5)
+
+return s42::Time::Time_of_day::Night;
+
+
+}
+
 auto main () -> int
 {
 auto time = s42::Time(13, 59, 58);
@@ -79,4 +121,6 @@ time.next_hour();
 time.next_minute();
 time.next_second();
 std::cout<<time.to_string()<<"\n";
+std::cout<<time.to_string(time.time_of_day())<<"\n";
+
 }
