@@ -29,6 +29,12 @@ struct Print : public Element {
 struct Addition : public Element {
     auto evaluate(stack_type&) const -> void override;
 };
+struct Subtraction : public Element {
+    auto evaluate(stack_type&) const -> void override;
+};
+struct Multiply : public Element {
+    auto evaluate(stack_type&) const -> void override;
+};
 
 struct Calculator {
     stack_type stack;

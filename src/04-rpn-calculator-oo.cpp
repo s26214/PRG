@@ -50,6 +50,27 @@ auto Addition::evaluate(stack_type& stack) const -> void
     stack.push(a + b);
 }
 
+auto Subtraction::evaluate(stack_type& stack) const -> void
+{
+    if (stack.size() < 2) {
+        throw std::logic_error{"not enough operands for -"};
+    }
+    auto const b = pop_top(stack);
+    auto const a = pop_top(stack);
+    stack.push(a - b);
+}
+
+auto Multiply::evaluate(stack_type& stack) const -> void
+{
+    if (stack.size() < 2) {
+        throw std::logic_error{"not enough operands for *"};
+    }
+    auto const b = pop_top(stack);
+    auto const a = pop_top(stack);
+    stack.push(a * b);
+}
+
+
 Calculator::Calculator(stack_type s) : stack{std::move(s)}
 {}
 
@@ -90,15 +111,25 @@ auto main(int argc, char* argv[]) -> int
         try {
             using student::rpn_calculator::Addition;
             using student::rpn_calculator::Literal;
+            using student::rpn_calculator::Multiply;
             using student::rpn_calculator::Print;
+            using student::rpn_calculator::Subtraction;
 
             if (each == "p") {
                 calculator.push(std::make_unique<Print>());
             } else if (each == "+") {
                 calculator.push(std::make_unique<Addition>());
-            } else {
+            } else if (each == "-") {
+                calculator.push(std::make_unique<Subtraction>());
+            } else if (each == "*") {
+                calculator.push(std::make_unique<Multiply>());
+            }
+
+            else {
                 calculator.push(std::make_unique<Literal>(std::stod(each)));
             }
+
+
         } catch (std::logic_error const& e) {
             std::cerr << "error: " << each << ": " << e.what() << "\n";
         }

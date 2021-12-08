@@ -19,6 +19,7 @@ auto s42::Time::next_minute() -> void
 {
     if (min == 59) {
         min = 0;
+	hour++;
     } else {
         min++;
     }
@@ -27,6 +28,7 @@ auto s42::Time::next_second() -> void
 {
     if (sec == 59) {
         sec = 0;
+	min++;
     }
 
     else {
@@ -205,16 +207,48 @@ auto s42::Time::operator!=(s42::Time const& op) const -> bool
     else
         return false;
 }
+auto s42::Time::count_seconds() const -> uint64_t
+{
+    int h = hour;
+    int m = min;
+    int s = sec;
 
+    std::uint64_t c_sec = h * 3600 + m * 60 + s;
+    return c_sec;
+}
+
+
+auto s42::Time::count_minutes() const -> uint64_t
+{
+    int h = hour;
+    int m = min;
+
+    std::uint64_t c_min = h * 60 + m;
+    return c_min;
+}
+auto s42::Time::time_to_midnight() const -> s42::Time
+{
+    s42::Time tim_mid(0, 0, 0);
+    tim_mid.sec  = 60 - sec;
+    tim_mid.min  = 59 - min;
+    tim_mid.hour = 23 - hour;
+
+    return tim_mid;
+}
 
 auto main() -> int
 {
     auto time = s42::Time(13, 59, 58);
     std::cout << time.to_string() << "\n";
-    time.next_hour();
     time.next_minute();
+    time.next_hour();
     time.next_second();
     std::cout << time.to_string() << "\n";
+    std::cout << time.count_seconds() << "\n";
+    std::cout << time.count_minutes() << "\n";
+    std::cout << time.time_to_midnight().hour << ":"
+              << time.time_to_midnight().min << ":"
+              << time.time_to_midnight().sec << "\n";
     std::cout << time.to_string(time.time_of_day()) << "\n";
     auto time_2 = time + s42::Time(4, 0, 2);
     auto time_3 = time_2 - s42::Time(5, 0, 59);
@@ -223,7 +257,6 @@ auto main() -> int
     auto time_4 = time > s42::Time(5, 3, 5);
     std::cout << time.to_string() << " > " << s42::Time(5, 3, 5).to_string()
               << "\n";
-
     if (time_4 == 1) {
         std::cout << "is true \n";
     } else {
