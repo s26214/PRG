@@ -90,7 +90,7 @@ auto evaluate_pow(std::stack<double>& stack) -> void
 
 auto evaluate_sqrt(std::stack<double>& stack) -> void
 {
-    if (stack.size() < 1) {
+    if (stack.size() > 1) {
         throw std::logic_error{"not enough operands for sqrt"};
     }
     auto const a = pop_top(stack);
@@ -99,7 +99,7 @@ auto evaluate_sqrt(std::stack<double>& stack) -> void
 
 auto evaluate_cbrt(std::stack<double>& stack) -> void
 {
-    if (stack.size() < 1) {
+    if (stack.size() > 1) {
         throw std::logic_error{"not enough operands for cbrt"};
     }
     auto const a = pop_top(stack);

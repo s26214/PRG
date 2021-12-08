@@ -35,6 +35,30 @@ struct Subtraction : public Element {
 struct Multiply : public Element {
     auto evaluate(stack_type&) const -> void override;
 };
+struct Divide : public Element {
+    auto evaluate(stack_type&) const -> void override;
+};
+struct Divide_2 : public Element {
+    auto evaluate(stack_type&) const -> void override;
+};
+struct Divide_r : public Element {
+    auto evaluate(stack_type&) const -> void override;
+};
+struct  Power : public Element {
+    auto evaluate(stack_type&) const -> void override;
+};
+struct Sq_root : public Element {
+    auto evaluate(stack_type&) const -> void override;
+};
+struct Cb_root : public Element {
+    auto evaluate(stack_type&) const -> void override;
+};
+
+
+
+
+
+
 
 struct Calculator {
     stack_type stack;
