@@ -5,13 +5,13 @@
 #include <RPN_calculator.h>
 
 #include <algorithm>
+#include <cmath>
 #include <iostream>
 #include <iterator>
 #include <stack>
 #include <stdexcept>
 #include <string>
 #include <vector>
-#include <cmath>
 
 static auto pop_top(std::stack<double>& stack) -> double
 {
@@ -60,7 +60,8 @@ auto Subtraction::evaluate(stack_type& stack) const -> void
     stack.push(a - b);
 }
 
-auto Multiply::evaluate(stack_type& stack) const -> void // needs * in "" while using it
+auto Multiply::evaluate(stack_type& stack) const -> void  // needs * in "" while
+                                                          // using it
 {
     if (stack.size() < 2) {
         throw std::logic_error{"not enough operands for *"};
@@ -69,7 +70,7 @@ auto Multiply::evaluate(stack_type& stack) const -> void // needs * in "" while 
     auto const a = pop_top(stack);
     stack.push(a * b);
 }
-auto Divide::evaluate(stack_type& stack) const -> void 
+auto Divide::evaluate(stack_type& stack) const -> void
 {
     if (stack.size() < 2) {
         throw std::logic_error{"not enough operands for /"};
@@ -78,7 +79,7 @@ auto Divide::evaluate(stack_type& stack) const -> void
     auto const a = pop_top(stack);
     stack.push(a / b);
 }
-auto Divide_2::evaluate(stack_type& stack) const -> void 
+auto Divide_2::evaluate(stack_type& stack) const -> void
 {
     if (stack.size() < 2) {
         throw std::logic_error{"not enough operands for //"};
@@ -88,7 +89,7 @@ auto Divide_2::evaluate(stack_type& stack) const -> void
     stack.push(std::round(a / b));
 }
 
-auto Divide_r::evaluate(stack_type& stack) const -> void 
+auto Divide_r::evaluate(stack_type& stack) const -> void
 {
     if (stack.size() < 2) {
         throw std::logic_error{"not enough operands for %"};
@@ -97,7 +98,7 @@ auto Divide_r::evaluate(stack_type& stack) const -> void
     auto const a = pop_top(stack);
     stack.push((int)a % (int)b);
 }
-auto Power::evaluate(stack_type& stack) const -> void 
+auto Power::evaluate(stack_type& stack) const -> void
 {
     if (stack.size() < 2) {
         throw std::logic_error{"not enough operands for **"};
@@ -106,7 +107,7 @@ auto Power::evaluate(stack_type& stack) const -> void
     auto const a = pop_top(stack);
     stack.push(std::pow(a, b));
 }
-auto Sq_root::evaluate(stack_type& stack) const -> void 
+auto Sq_root::evaluate(stack_type& stack) const -> void
 {
     if (stack.size() > 1) {
         throw std::logic_error{"not enough operands for sqrt"};
@@ -114,7 +115,7 @@ auto Sq_root::evaluate(stack_type& stack) const -> void
     auto const a = pop_top(stack);
     stack.push(std::sqrt(a));
 }
-auto Cb_root::evaluate(stack_type& stack) const -> void 
+auto Cb_root::evaluate(stack_type& stack) const -> void
 {
     if (stack.size() > 1) {
         throw std::logic_error{"not enough operands for cbrt"};
@@ -122,12 +123,6 @@ auto Cb_root::evaluate(stack_type& stack) const -> void
     auto const a = pop_top(stack);
     stack.push(std::cbrt(a));
 }
-
-
-
-
-
-
 
 
 Calculator::Calculator(stack_type s) : stack{std::move(s)}
@@ -169,16 +164,16 @@ auto main(int argc, char* argv[]) -> int
     for (auto const& each : make_args(argc, argv)) {
         try {
             using student::rpn_calculator::Addition;
+            using student::rpn_calculator::Cb_root;
+            using student::rpn_calculator::Divide;
+            using student::rpn_calculator::Divide_2;
+            using student::rpn_calculator::Divide_r;
             using student::rpn_calculator::Literal;
             using student::rpn_calculator::Multiply;
+            using student::rpn_calculator::Power;
             using student::rpn_calculator::Print;
+            using student::rpn_calculator::Sq_root;
             using student::rpn_calculator::Subtraction;
-	using student::rpn_calculator::Divide;
-	 using student::rpn_calculator::Divide_2;
-         using student::rpn_calculator::Divide_r;
-         using student::rpn_calculator::Power;
-         using student::rpn_calculator::Sq_root;
-         using student::rpn_calculator::Cb_root;
 
 
             if (each == "p") {
@@ -193,20 +188,17 @@ auto main(int argc, char* argv[]) -> int
                 calculator.push(std::make_unique<Divide>());
             }
 
- else if (each == "//") {
+            else if (each == "//") {
                 calculator.push(std::make_unique<Divide_2>());
-            }else if (each == "%") {
+            } else if (each == "%") {
                 calculator.push(std::make_unique<Divide_r>());
-            }else if (each == "**") {
+            } else if (each == "**") {
                 calculator.push(std::make_unique<Power>());
-            }else if (each == "sqrt") {
+            } else if (each == "sqrt") {
                 calculator.push(std::make_unique<Sq_root>());
-            }else if (each == "cbrt") {
+            } else if (each == "cbrt") {
                 calculator.push(std::make_unique<Cb_root>());
             }
-
-
-
 
 
             else {

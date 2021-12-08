@@ -44,7 +44,7 @@ struct Divide_2 : public Element {
 struct Divide_r : public Element {
     auto evaluate(stack_type&) const -> void override;
 };
-struct  Power : public Element {
+struct Power : public Element {
     auto evaluate(stack_type&) const -> void override;
 };
 struct Sq_root : public Element {
@@ -53,11 +53,6 @@ struct Sq_root : public Element {
 struct Cb_root : public Element {
     auto evaluate(stack_type&) const -> void override;
 };
-
-
-
-
-
 
 
 struct Calculator {

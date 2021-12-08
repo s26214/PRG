@@ -19,7 +19,7 @@ auto s42::Time::next_minute() -> void
 {
     if (min == 59) {
         min = 0;
-	hour++;
+        hour++;
     } else {
         min++;
     }
@@ -28,7 +28,7 @@ auto s42::Time::next_second() -> void
 {
     if (sec == 59) {
         sec = 0;
-	min++;
+        min++;
     }
 
     else {
