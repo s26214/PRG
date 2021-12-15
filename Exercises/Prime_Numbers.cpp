@@ -26,7 +26,7 @@ auto Prime_numbers (int start_num, int num) -> std::string
  auto main() -> int
  {
     std::cout << Prime_numbers( 2, 20)<<"\n";
-     std::cout << Prime_numbers(2, 20);
+    std::cout << Prime_numbers(2, 20);
 
     return 0;
 }
