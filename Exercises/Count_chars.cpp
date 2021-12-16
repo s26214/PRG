@@ -4,7 +4,7 @@
 auto count_chars(std::string word, char letter) -> int
 {
     auto num = 0;
-    for (int i = 0; i < word.size() ; i++ ){
+    for (int i = 0; i < word.size() - 1 ; i++ ){
         if (word[i] == letter) {
         num++;
         }
