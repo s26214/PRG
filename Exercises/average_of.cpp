@@ -11,7 +11,7 @@ auto average_of(std::vector<int> numbers) -> double
 
         }
 
-    return sum/2;
+    return sum/numbers.size();
 
 }
 int main() {
