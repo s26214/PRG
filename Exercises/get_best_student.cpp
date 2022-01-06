@@ -56,5 +56,5 @@ auto main() -> int
     std::cout<<"John : "<<average_of(john) << "\n";
     auto students = std::vector<student>{john,steven,dani};
     std::cout<< get_best_student (students).name;
-    return 0; 
+    return 0;  
 }
